@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /winattacklab/
+
+echo "================================"
+date
+temp=`echo ${QUERY_STRING#*=} | tr -d '\\\|";&%/_[]{}$<>/'`
+echo "searching .ch zonefile for $temp"
+grep -F $temp /opt/data/ch.txt 
+echo "=========== DONE ==============="

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /winattacklab/
+
+echo "============================================="
+date
+echo "please enter search string and click Run Task"
+echo "============================================="
+echo "Switch .ch zone file search https://securityblog.switch.ch/2020/11/18/dot_ch_zone_is_open_data/"
+echo "============================================="
