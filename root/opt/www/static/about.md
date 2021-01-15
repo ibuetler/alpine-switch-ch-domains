@@ -1,5 +1,5 @@
-## Introduction
-This project is powered by Compass Security
+## Compass Security
+This project is powered by [Compass Security](https://www.compass-security.com)
 
 * Ethical Hacking
 * Penetration Testing

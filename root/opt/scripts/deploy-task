@@ -1,10 +1,18 @@
 #!/bin/bash
 
-cd /winattacklab/
-
+cd /opt/data
 echo "================================"
-date
-temp=`echo ${QUERY_STRING#*=} | tr -d '\\\|";&%/_[]{}$<>/'`
-echo "searching .ch zonefile for $temp"
-grep -F $temp /opt/data/ch.txt 
+echo ${HTTP_X_REAL_IP} ${QUERY_STRING} >> /opt/data/query-unfilterd.log  
+ivan=`echo ${QUERY_STRING} | tr -d '\\\|";&%/_[]{}$<>/*"\&'` 
+echo "Release 2021-01-08--501"
+date                                                            
+temp=`echo ${ivan#*=} | tr -d '\\\|";&%/_[]{}$<>/*"\&'`         
+echo -e "`date` \t ${HTTP_X_REAL_IP} \t $temp \t ${HTTP_USER_AGENT}" >> /opt/data/query.log
+if [ ${#temp} -gt 1 ]; then        
+        echo "searching for: $temp"   
+        grep -F $temp /opt/data/ch.txt
+else                                                                    
+        echo "please give at least two characters for your search query"
+fi                                     
 echo "=========== DONE ==============="
+

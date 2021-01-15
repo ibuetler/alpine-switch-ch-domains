@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "`date`: cronjob update zone switch ch run" >> /tmp/cron.log
+ls -al /opt/data >> /tmp/cron.log
+NOW=$(date +%Y-%m-%d-%H:%M)
+
+dig -k /opt/data/zonedata.key @zonedata.switch.ch +noall +answer +noidnout +onesoa AXFR ch. > /opt/data/ch.txt.$NOW
+diff /opt/data/ch.txt /opt/data/ch.txt.$NOW > /opt/data/ch.txt.diff.$NOW
+mv /opt/data/ch.txt.$NOW /opt/data/ch.txt
+
+
